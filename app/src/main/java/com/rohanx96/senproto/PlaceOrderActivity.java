@@ -1,6 +1,7 @@
 package com.rohanx96.senproto;
 
 import android.app.DatePickerDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -48,6 +49,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.acl.Owner;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +64,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.OnClick;
 import fr.ganfra.materialspinner.MaterialSpinner;
 
 /**
@@ -68,7 +78,7 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
     String TAG="PlacesOrderActivity: ";
     MaterialEditText etweight,etdate,etinfo,etcontact;
     MaterialSpinner itemspinner;
-
+    String postUrl = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -215,5 +225,59 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
         Toast.makeText(PlaceOrderActivity.this, connectionResult.getErrorMessage(), Toast.LENGTH_SHORT).show();
     }
 
+    @OnClick(R.id.place_order_button)
+    public void placeOrder(){
+        PostHttp http = new PostHttp();
+        http.execute(postUrl);
+    }
 
+    class PostHttp extends AsyncTask<String,String,String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            URL url = null;
+            try {
+                url = new URL(params[0]);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setDoOutput(true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            DataOutputStream dStream = null;
+            try {
+                dStream = new DataOutputStream(connection.getOutputStream());
+                dStream.writeBytes(createJsonString()); //Writes out the string to the underlying output stream as a sequence of bytes
+                dStream.flush(); // Flushes the data output stream.
+                dStream.close(); // Closing the output stream.
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Toast.makeText(getApplicationContext(),"Completed Post request",Toast.LENGTH_LONG);
+        }
+    }
+
+    public String createJsonString(){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.accumulate("weight", etweight.getText());
+            jsonObject.accumulate("contact", etcontact.getText());
+            jsonObject.accumulate("date", etdate.getText());
+            jsonObject.accumulate("info",etinfo.getText());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject.toString();
+    }
 }

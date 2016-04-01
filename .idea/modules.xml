@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SEN-master.iml" filepath="$PROJECT_DIR$/SEN-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SEN.iml" filepath="$PROJECT_DIR$/SEN.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
