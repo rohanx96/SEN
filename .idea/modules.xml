@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SEN.iml" filepath="$PROJECT_DIR$/SEN.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arbudadrivers/arbudadrivers.iml" filepath="$PROJECT_DIR$/arbudadrivers/arbudadrivers.iml" />
     </modules>
   </component>
 </project>
