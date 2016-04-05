@@ -41,29 +41,44 @@
                 android:layout_height="wrap_content"
                 android:text="Nothing "/-->
 
+
+
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/itemspinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:ms_alignLabels="false"
                 app:ms_floatingLabelColor="@color/colorPrimary"
-                app:ms_floatingLabelText="Item"
-                app:ms_hint="Select item to be delivered"
+                app:ms_floatingLabelText="Goods to be delivered"
+                app:ms_hint="Select type of goods"
                 app:ms_highlightColor="@color/colorPrimary"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
                 />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etweight"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Weight"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="?colorPrimary"
-                app:met_floatingLabelTextColor="?colorPrimary"
-                app:met_textColor="#000000"
-                app:met_singleLineEllipsis="true" />
+                android:orientation="horizontal"
+                android:weightSum="10">
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/etweight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Weight"
+                    app:met_floatingLabel="highlight"
+                    app:met_primaryColor="?colorPrimary"
+                    app:met_floatingLabelTextColor="?colorPrimary"
+                    app:met_textColor="#000000"
+                    app:met_singleLineEllipsis="true"
+                    android:layout_weight="9"/>
+                <TextView
+                    android:text=" kg"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/etdate"
@@ -99,6 +114,7 @@
                 app:met_singleLineEllipsis="true" />
 
             <Button
+                android:id="@+id/place_order_button"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_alignParentBottom="true"
