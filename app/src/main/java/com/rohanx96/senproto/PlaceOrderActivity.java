@@ -20,7 +20,6 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,6 +85,8 @@ import fr.ganfra.materialspinner.MaterialSpinner;
  * Created by rose on 8/3/16.
  */
 public class PlaceOrderActivity  extends AppCompatActivity implements OnConnectionFailedListener{
+
+
 
 
     //TextView tvdetails1,tvdetails2;
