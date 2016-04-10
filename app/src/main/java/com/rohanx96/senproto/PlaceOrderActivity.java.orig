@@ -1,7 +1,10 @@
 package com.rohanx96.senproto;
 
 import android.app.DatePickerDialog;
+<<<<<<< HEAD
+=======
 import android.app.ProgressDialog;
+>>>>>>> d260d81cb865a270ca33a4c85c5333125aa96ab5
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -52,6 +55,9 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.rengwuxian.materialedittext.MaterialEditText;
+<<<<<<< HEAD
+
+=======
 import com.rengwuxian.materialedittext.validation.RegexpValidator;
 
 import org.apache.http.HttpResponse;
@@ -63,6 +69,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+>>>>>>> d260d81cb865a270ca33a4c85c5333125aa96ab5
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -78,7 +85,10 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+<<<<<<< HEAD
 import butterknife.ButterKnife;
+=======
+>>>>>>> d260d81cb865a270ca33a4c85c5333125aa96ab5
 import butterknife.OnClick;
 import fr.ganfra.materialspinner.MaterialSpinner;
 
@@ -88,15 +98,22 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 public class PlaceOrderActivity  extends AppCompatActivity implements OnConnectionFailedListener{
 
 
+
+
     //TextView tvdetails1,tvdetails2;
     private GoogleApiClient mGoogleApiClient;
     String TAG="PlacesOrderActivity: ";
     MaterialEditText etweight,etdate,etinfo,etcontact;
     MaterialSpinner itemspinner;
+<<<<<<< HEAD
+    String postUrl = "http://rahulkumarwp.pythonanywhere.com/logistics_api/api/orderslist/";
+    ProgressBar progressBar;
+=======
     Button placeOrderButton;
 
     String source=null,destination=null;
 
+>>>>>>> d260d81cb865a270ca33a4c85c5333125aa96ab5
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +136,9 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
         itemspinner=(MaterialSpinner)findViewById(R.id.itemspinner);
         etdate=(MaterialEditText)findViewById(R.id.etdate);
         etdate.setKeyListener(null);
+<<<<<<< HEAD
+        progressBar = (ProgressBar) findViewById(R.id.place_order_progress);
+=======
         placeOrderButton=(Button)findViewById(R.id.place_order_button);
 
         placeOrderButton.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +151,7 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
             }
         });
 
+>>>>>>> d260d81cb865a270ca33a4c85c5333125aa96ab5
         //entries for items' spinner
         List<String> nameslist=new ArrayList<String>();
         nameslist.add("Grains");
@@ -205,7 +226,6 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
                         Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
         Calendar newCalendar = Calendar.getInstance();
@@ -302,7 +322,42 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
         Toast.makeText(PlaceOrderActivity.this, connectionResult.getErrorMessage(), Toast.LENGTH_SHORT).show();
     }
 
+    @OnClick(R.id.place_order_button)
+    public void placeOrder(){
+        PostHttp http = new PostHttp();
+        progressBar.setVisibility(View.VISIBLE);
+        http.execute(postUrl);
+    }
 
+    class PostHttp extends AsyncTask<String,String,String>{
+
+<<<<<<< HEAD
+        @Override
+        protected String doInBackground(String... params) {
+            URL url = null;
+            try {
+                url = new URL(params[0]);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setDoOutput(true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            DataOutputStream dStream = null;
+            try {
+                dStream = new DataOutputStream(connection.getOutputStream());
+                dStream.writeBytes(createJsonString()); //Writes out the string to the underlying output stream as a sequence of bytes
+                dStream.flush(); // Flushes the data output stream.
+                dStream.close(); // Closing the output stream.
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+=======
     private ProgressDialog pDialog;
     int count=4;
 
@@ -354,10 +409,40 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
 
 
 
+>>>>>>> d260d81cb865a270ca33a4c85c5333125aa96ab5
             return null;
         }
 
         @Override
+<<<<<<< HEAD
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(getApplicationContext(),"Completed Post request",Toast.LENGTH_LONG);
+        }
+    }
+
+    public String createJsonString(){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.accumulate("order_id",5);
+            jsonObject.accumulate("goods_type",itemspinner.getSelectedItem().toString());
+            jsonObject.accumulate("order_status","pending");
+            jsonObject.accumulate("quantity", Integer.parseInt(etweight.getText().toString()));
+            jsonObject.accumulate("source","Gandhinagar");
+            jsonObject.accumulate("destination","Ahmedabad");
+            JSONObject contact = new JSONObject();
+            contact.accumulate("contact_num", Integer.parseInt(etcontact.getText().toString()));
+            contact.accumulate("email_id", etdate.getText().toString());
+            contact.accumulate("name",etinfo.getText().toString());
+            contact.accumulate("password",etinfo.getText().toString());
+            jsonObject.accumulate("contact_num", contact);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject.toString();
+    }
+=======
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             if (pDialog.isShowing())
@@ -368,4 +453,5 @@ public class PlaceOrderActivity  extends AppCompatActivity implements OnConnecti
 
 
 
+>>>>>>> d260d81cb865a270ca33a4c85c5333125aa96ab5
 }

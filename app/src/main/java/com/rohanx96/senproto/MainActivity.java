@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        CardView myOrders= (CardView) findViewById(R.id.myOrders);
+        myOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this,MyOrders.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -68,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.login)
     public void login(){
-
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
     }
 }

@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rohanx96.senproto">
 
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -11,11 +16,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCVZSqPfg0AmVCmrVecRSQcP56pQxGaeWI"/>
-
+            android:value="AIzaSyCVZSqPfg0AmVCmrVecRSQcP56pQxGaeWI" />
 
         <activity
             android:name=".MainActivity"
@@ -32,6 +35,16 @@
             android:label="Place Order"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".MyOrders"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar"/>
     </application>
 
 </manifest>

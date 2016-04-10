@@ -3,7 +3,10 @@ package com.rohanx96.arbudadrivers;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -67,6 +70,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (preferences.getBoolean(getString(R.string.pref_signed_in),false)) {
+            startHomeActivity();
+            finish();
+        }
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -240,6 +248,8 @@ public class LoginActivity extends AppCompatActivity {
                         String name = driverObject.getString("name");
                         String password = driverObject.getString("password");
                         if (name.equals(mEmail) && password.equals(mPassword)){
+                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                            preferences.edit().putInt(getString(R.string.pref_driver_id),driverObject.getInt("driver_id")).apply();
                             return true;
                         }
                     }
@@ -270,6 +280,9 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(false);
 
             if (success) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                preferences.edit().putBoolean(getString(R.string.pref_signed_in),true).apply();
+                startHomeActivity();
                 Toast.makeText(getApplicationContext(),"You have successfully siged in",Toast.LENGTH_SHORT).show();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
@@ -282,6 +295,11 @@ public class LoginActivity extends AppCompatActivity {
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    public void startHomeActivity(){
+        Intent home = new Intent(this,HomeActivity.class);
+        startActivity(home);
     }
 }
 
