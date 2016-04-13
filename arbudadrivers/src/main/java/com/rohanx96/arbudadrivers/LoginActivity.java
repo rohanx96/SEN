@@ -283,7 +283,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 preferences.edit().putBoolean(getString(R.string.pref_signed_in),true).apply();
                 startHomeActivity();
-                Toast.makeText(getApplicationContext(),"You have successfully siged in",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"You have successfully signed in",Toast.LENGTH_SHORT).show();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
