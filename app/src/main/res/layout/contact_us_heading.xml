@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:padding="16dp"
-        android:text="Enter Order ID"
+        android:text="Contact Us"
         android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
         android:textColor="@color/white" />
 </LinearLayout>

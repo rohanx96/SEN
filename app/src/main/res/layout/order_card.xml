@@ -4,7 +4,7 @@
     android:id="@+id/cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="10dp"
     card_view:cardElevation="4dp"
     >
 
@@ -43,13 +43,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                android:text="Source: "/>
+                android:text="From : "/>
             <TextView
                 android:id="@+id/source"
                 android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                android:text="Destination: "/>
+                android:text="To  : "/>
             <TextView
                 android:id="@+id/destination"
                 android:layout_width="wrap_content"
@@ -120,6 +120,26 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:text="qeeqe"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <Button
+                    android:visibility="visible"
+                    android:id="@+id/cancelOrder"
+                    android:text="Cancel Order"
+                    android:drawableLeft="@drawable/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/colorAccent"/>
+            </RelativeLayout>
         </LinearLayout>
 
 

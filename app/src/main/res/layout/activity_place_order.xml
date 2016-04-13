@@ -9,119 +9,135 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-
-            <fragment
-                android:id="@+id/autocomplete_fragment1"
-                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <!--TextView
-                android:layout_marginTop="30dp"
-                android:id="@+id/place_details1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nothing "/-->
-
-            <fragment
-                android:id="@+id/autocomplete_fragment2"
-                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <!--TextView
-                android:layout_marginTop="30dp"
-                android:id="@+id/place_details2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nothing "/-->
-
-
-
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/itemspinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:ms_alignLabels="false"
-                app:ms_floatingLabelColor="@color/colorPrimary"
-                app:ms_floatingLabelText="Goods to be delivered"
-                app:ms_hint="Select type of goods"
-                app:ms_highlightColor="@color/colorPrimary"
-                />
-
+            android:layout_height="wrap_content">
             <LinearLayout
+                android:id="@+id/llform"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:focusable="true" android:focusableInTouchMode="true">
+
+
+
                 <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/etweight"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/etsource"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Weight"
+                    android:hint="Source"
                     app:met_floatingLabel="highlight"
                     app:met_primaryColor="?colorPrimary"
                     app:met_floatingLabelTextColor="?colorPrimary"
                     app:met_textColor="#000000"
                     app:met_singleLineEllipsis="true"
-                    android:layout_weight="9"/>
-                <TextView
-                    android:text=" kg"
-                    android:textSize="20sp"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    app:met_iconLeft="@drawable/place"/>
+
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/etdestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Destination"
+                    app:met_floatingLabel="highlight"
+                    app:met_primaryColor="?colorPrimary"
+                    app:met_floatingLabelTextColor="?colorPrimary"
+                    app:met_textColor="#000000"
+                    app:met_singleLineEllipsis="true"
+                    app:met_iconLeft="@drawable/place"/>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/itemspinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:ms_alignLabels="false"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="Goods to be delivered"
+                    app:ms_hint="Select type of goods"
+                    app:ms_highlightColor="@color/colorPrimary"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/etweight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Weight"
+                        android:inputType="number"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="?colorPrimary"
+                        app:met_floatingLabelTextColor="?colorPrimary"
+                        app:met_textColor="#000000"
+                        app:met_singleLineEllipsis="true"
+                        android:layout_weight="9"
+                        app:met_iconLeft="@drawable/weight"/>
+                    <TextView
+                        android:text=" kg"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+
+                <!--com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/etdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Expected Delivery Date"
+                    app:met_floatingLabel="highlight"
+                    app:met_primaryColor="?colorPrimary"
+                    app:met_floatingLabelTextColor="?colorPrimary"
+                    app:met_textColor="#000000"
+                    app:met_singleLineEllipsis="true"
+                    app:met_iconLeft="@drawable/calendar"/-->
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/etinfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Additional Information (size etc.)"
+                    app:met_floatingLabel="highlight"
+                    app:met_primaryColor="?colorPrimary"
+                    app:met_floatingLabelTextColor="?colorPrimary"
+                    app:met_textColor="#000000"
+                    app:met_singleLineEllipsis="true"
+                    app:met_iconLeft="@drawable/info"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/etcontact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Your Contact Number"
+                    app:met_floatingLabel="highlight"
+                    app:met_primaryColor="?colorPrimary"
+                    app:met_floatingLabelTextColor="?colorPrimary"
+                    app:met_textColor="#000000"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    app:met_singleLineEllipsis="true"
+                    app:met_iconLeft="@drawable/phone"/>
+
+
             </LinearLayout>
-
-
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Expected Delivery Date"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="?colorPrimary"
-                app:met_floatingLabelTextColor="?colorPrimary"
-                app:met_textColor="#000000"
-                app:met_singleLineEllipsis="true" />
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etinfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Additional Information"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="?colorPrimary"
-                app:met_floatingLabelTextColor="?colorPrimary"
-                app:met_textColor="#000000"
-                app:met_singleLineEllipsis="true" />
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etcontact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contact Information"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="?colorPrimary"
-                app:met_floatingLabelTextColor="?colorPrimary"
-                app:met_textColor="#000000"
-                app:met_singleLineEllipsis="true" />
-
             <Button
+                android:layout_below="@id/llform"
                 android:id="@+id/place_order_button"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
                 android:text="Place Order"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
-        </LinearLayout>
+        </RelativeLayout>
+
 
     </ScrollView>
 

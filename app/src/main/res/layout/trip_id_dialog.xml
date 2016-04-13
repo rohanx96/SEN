@@ -6,11 +6,14 @@
     android:padding="16dp">
 
     <EditText
+        android:id="@+id/ettripid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter ID"
-        android:padding="16dp"/>
+        android:padding="16dp"
+        android:inputType="number"/>
     <Button
+        android:id="@+id/track"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:text="TRACK ORDER"

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/email2"
+            android:backgroundTint="@android:color/transparent"/>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "jatinpatel845@gmail.com"
+            android:padding="16dp"
+            android:textColor="#000000"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardphone"
+        android:layout_below="@id/cardemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/phone2"
+            android:backgroundTint="@android:color/transparent"/>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "Jatin Patel (9426898134)"
+            android:padding="16dp"
+            android:textColor="#000000"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

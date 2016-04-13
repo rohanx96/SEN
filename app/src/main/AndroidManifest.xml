@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.rohanx96.senproto">
 
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCVZSqPfg0AmVCmrVecRSQcP56pQxGaeWI" />
@@ -34,17 +44,33 @@
             android:name=".PlaceOrderActivity"
             android:label="Place Order"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.ActionBar" />
+            android:theme="@style/AppTheme.ActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MyOrders"
+            android:label="My Orders"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.ActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustPan"
+            android:label="Log In"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.ActionBar"/>
+            android:theme="@style/AppTheme.ActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SignupActivity"
+            android:label="Sign up"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TrackOrderActivity"
+            android:label="Track Order"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".FaqActivity"
+            android:label="FAQs"
+            android:theme="@style/AppTheme.ActionBar"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
