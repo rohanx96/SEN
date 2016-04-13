@@ -15,4 +15,5 @@
     </string>
     <string name="pref_signed_in">IsSignedIn</string>
     <string name="pref_driver_id">driver_id</string>
+    <string name="pref_trip_started">isTripStarted</string>
 </resources>

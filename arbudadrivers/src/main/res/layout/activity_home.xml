@@ -24,6 +24,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="START TRIP" />
+            <TextView
+                android:id="@+id/home_end_trip_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Click on the button to end your current trip"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+            <Button
+                android:id="@+id/home_end_trip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="END TRIP"
+                android:visibility="gone"/>
         </LinearLayout>
         <ProgressBar
             android:id="@+id/start_trip_progress"
