@@ -300,6 +300,7 @@ public class LoginActivity extends AppCompatActivity {
     public void startHomeActivity(){
         Intent home = new Intent(this,HomeActivity.class);
         startActivity(home);
+        finish();
     }
 }
 

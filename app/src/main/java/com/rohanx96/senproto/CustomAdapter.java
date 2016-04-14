@@ -245,8 +245,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             context.startActivity(new Intent(context,MyOrders.class));
         }
     }
-
-
 }
 
 

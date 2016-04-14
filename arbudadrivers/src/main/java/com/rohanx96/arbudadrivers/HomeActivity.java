@@ -123,6 +123,7 @@ public class HomeActivity extends AppCompatActivity {
     public void logout(){
         pref.edit().putBoolean(getString(R.string.pref_signed_in),false).apply();
         startActivity(new Intent(this,LoginActivity.class));
+        Toast.makeText(this,"You have successfully logged out",Toast.LENGTH_LONG).show();
         finish();
     }
 

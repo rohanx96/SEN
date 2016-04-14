@@ -322,7 +322,7 @@ public class TrackingService extends IntentService implements LocationListener{
             JSONObject object = new JSONObject();
             object.put(Constants.TRIP_ID,pref.getInt(Constants.TRIP_ID,-1));
             object.put(Constants.TRIP_CAPACITY,pref.getInt(Constants.TRIP_CAPACITY,-1));
-            object.put(Constants.LOCATION,longitude + "," + latitude);
+            object.put(Constants.LOCATION,latitude + "," + longitude);
             object.put(Constants.TRUCK_ID,pref.getInt(Constants.TRUCK_ID,-1));
             object.put(Constants.STATUS,"InTransit");
             object.put(Constants.ORDER_ID,pref.getInt(Constants.ORDER_ID,-1));
