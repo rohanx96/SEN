@@ -126,6 +126,7 @@ public class TrackingService extends IntentService implements LocationListener{
                         e.printStackTrace();
                     }
                 }
+                updateLocation();
             }
         });
         loop.run();
@@ -179,8 +180,8 @@ public class TrackingService extends IntentService implements LocationListener{
                         MIN_DISTANCE_CHANGE_FOR_UPDATES,
                         this
                 );
-
                 if (locationManager != null) {
+                    Log.i("tracking ", locationManager.toString());
                     location = locationManager.getLastKnownLocation(provider_info);
                     updateGPSCoordinates();
                 }
@@ -199,13 +200,15 @@ public class TrackingService extends IntentService implements LocationListener{
      * Update GPSTracker latitude and longitude
      */
     public void updateGPSCoordinates() {
-        if (location != null) {
+        Log.i("tracking ", locationManager.toString());
+        //if (location != null) {
+            Log.i("tracking ", locationManager.toString());
             latitude = location.getLatitude();
             longitude = location.getLongitude();
             Log.i(TAG,"Longitude: " + longitude);
             Log.i(TAG,"Latitude: " + latitude);
             updateLocation();
-        }
+        //}
     }
 
     /**
@@ -324,7 +327,10 @@ public class TrackingService extends IntentService implements LocationListener{
             object.put(Constants.TRIP_CAPACITY,pref.getInt(Constants.TRIP_CAPACITY,-1));
             object.put(Constants.LOCATION,latitude + "," + longitude);
             object.put(Constants.TRUCK_ID,pref.getInt(Constants.TRUCK_ID,-1));
-            object.put(Constants.STATUS,"InTransit");
+            if (shouldContinue)
+                object.put(Constants.STATUS,"InTransit");
+            else
+                object.put(Constants.STATUS,"Delivered");
             object.put(Constants.ORDER_ID,pref.getInt(Constants.ORDER_ID,-1));
             json = object.toString();
             StringEntity se = new StringEntity(json);

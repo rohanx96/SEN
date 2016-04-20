@@ -311,6 +311,35 @@ public class HomeActivity extends AppCompatActivity {
                 e.printStackTrace();
                 return false;
             }
+            HttpClient httpclient2 = new DefaultHttpClient();
+            HttpPut httpPut2 = new HttpPut("http://rahulkumarwp.pythonanywhere.com/logistics_api/api/tripdetail/" + pref.getInt(Constants.TRIP_ID,-1));
+
+            try {
+                String json2 = "";
+                JSONObject object2 = new JSONObject();
+                object2.put(Constants.TRIP_ID,pref.getInt(Constants.TRIP_ID,-1));
+                object2.put(Constants.TRIP_CAPACITY,pref.getInt(Constants.TRIP_CAPACITY,-1));
+                object2.put(Constants.LOCATION,"00.00000,00.000000");
+                object2.put(Constants.TRUCK_ID,pref.getInt(Constants.TRUCK_ID,-1));
+                object2.put(Constants.STATUS,status);
+                object2.put(Constants.ORDER_ID,pref.getInt(Constants.ORDER_ID,-1));
+                json2 = object2.toString();
+                Log.i("Changing trip detail", json2);
+                StringEntity se2 = new StringEntity(json2);
+                httpPut.setEntity(se2);
+                httpPut.setHeader("Accept", "application/json");
+                httpPut.setHeader("Content-type", "application/json");
+                // Execute HTTP Post Request
+                HttpResponse response = httpclient2.execute(httpPut2);
+                String json_string = EntityUtils.toString(response.getEntity());
+                Log.d("PostOrder", json_string);
+
+            } catch (IOException e) {
+                return false;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
             return true;
         }
 
